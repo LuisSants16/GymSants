@@ -107,3 +107,71 @@ btnLimpiar.addEventListener("click", () => {
   }, 400);
 });
 
+/* ============================= */
+/* ===== SLIDER TESTIMONIOS ==== */
+/* ============================= */
+
+const testimonios = document.querySelectorAll(".testimonio_item");
+const dots = document.querySelectorAll(".dot");
+
+let index = 0;
+let intervalo;
+
+/* LIMPIAR TODO AL INICIAR */
+testimonios.forEach(t => t.classList.remove("active"));
+dots.forEach(d => d.classList.remove("active"));
+
+/* MOSTRAR */
+function mostrarTestimonio(i){
+
+  testimonios.forEach(t => t.classList.remove("active"));
+  dots.forEach(d => d.classList.remove("active"));
+
+  testimonios[i].classList.add("active");
+  dots[i].classList.add("active");
+
+  index = i;
+}
+
+/* AUTO */
+function iniciarSlider(){
+
+  intervalo = setInterval(() => {
+
+    index++;
+
+    if(index >= testimonios.length){
+      index = 0;
+    }
+
+    mostrarTestimonio(index);
+
+  }, 4000);
+
+}
+
+/* CLICK DOTS */
+dots.forEach((dot, i) => {
+
+  dot.addEventListener("click", () => {
+    mostrarTestimonio(i);
+    clearInterval(intervalo);
+    iniciarSlider();
+  });
+
+});
+
+/* HOVER PAUSE */
+const slider = document.querySelector(".testimonios_slider");
+
+slider.addEventListener("mouseenter", () => {
+  clearInterval(intervalo);
+});
+
+slider.addEventListener("mouseleave", () => {
+  iniciarSlider();
+});
+
+/* INICIAR */
+mostrarTestimonio(0);
+iniciarSlider();

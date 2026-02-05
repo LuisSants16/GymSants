@@ -631,6 +631,188 @@
   font-size: 0.9rem;
 }
 
+.testimonios_section{
+  padding: 120px 20px;
+  background:   linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)),
+  url("../img/testimonio.jpg") center / cover no-repeat;
+}
+
+.testimonios_container{
+  max-width: var(--max-width);
+  margin: auto;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+/* ===== IZQUIERDA ===== */
+
+.testimonio_box{
+  background: #111;
+  padding: 60px;
+  color: #fff;
+  position: relative;
+}
+
+.testimonios_slider{
+  position: relative;
+  overflow: hidden;
+}
+
+.testimonio_item{
+  display: none;
+  animation: fadeTestimonio 0.6s ease;
+}
+
+.testimonio_item.active{
+  display: block;
+}
+
+@keyframes fadeTestimonio{
+  from{
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to{
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Cliente */
+
+.cliente_info{
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.cliente_info img{
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--primary-color);
+}
+
+.cliente_info h4{
+  color: var(--primary-color);
+  margin-bottom: 3px;
+}
+
+.cliente_info span{
+  font-size: 0.85rem;
+  color: #bbb;
+}
+
+/* Texto */
+
+.testimonio_texto{
+  background: #2a2f36;
+  padding: 25px;
+  border-radius: 6px;
+  position: relative;
+}
+
+.testimonio_texto::before{
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 40px;
+
+  width: 20px;
+  height: 20px;
+  background: #2a2f36;
+  transform: rotate(45deg);
+}
+
+.testimonio_texto p{
+  line-height: 1.7;
+  color: #ddd;
+}
+
+/* Dots */
+
+.dot{
+  width: 28px;
+  height: 4px;
+  background: #555;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.dot.active{
+  background: var(--primary-color);
+  width: 35px;
+}
+
+.testimonio_dots{
+  margin-top: 30px;
+  display: flex;
+  gap: 10px;
+}
+
+.testimonio_dots .dot{
+  width: 30px;
+  height: 4px;
+  background: #444;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.testimonio_dots .dot.active{
+  background: var(--primary-color);
+}
+
+.testimonio_dots span{
+  width: 30px;
+  height: 4px;
+  background: #444;
+  border-radius: 10px;
+}
+
+.testimonio_dots span:first-child{
+  background: var(--primary-color);
+}
+
+/* ===== DERECHA ===== */
+
+.testimonio_info{
+  background:#00000077;
+
+  padding: 80px 60px;
+  color: #fff;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.tag_testimonio{
+  color: var(--primary-color);
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+
+.testimonio_info h2{
+  font-size: 2.6rem;
+  margin-bottom: 20px;
+}
+
+.testimonio_info h2 strong{
+  color: var(--primary-color);
+}
+
+.testimonio_info p{
+  max-width: 480px;
+  line-height: 1.7;
+  color: #ddd;
+}
+
 /* ---------- TABLET ---------- */
 @media (max-width: 1024px) {
   .container_about {
