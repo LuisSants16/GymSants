@@ -1,13 +1,23 @@
 .container_header{
-  background-color: var(--overlay-light);
+  background-color: transparent;
   padding: 15px 0;
 
   position: fixed;
   top: 0;
   width: 100%;
   z-index: 999;
+  transition: all 0.3s ease;
 
   backdrop-filter: blur(10px);
+}
+
+.container_header.scrolled{
+  background-color: rgba(0, 0, 0, 0.85);
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  box-shadow: 0 5px 20px rgba(0,0,0,0.4);
 }
 
 .content_header{
