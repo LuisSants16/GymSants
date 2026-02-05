@@ -48,53 +48,61 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-const btnIMC = document.getElementById("calcularIMC")
-const btnLimpiar = document.getElementById("limpiarIMC")
-const resultado = document.getElementById("resultadoIMC")
+const btnCalcular = document.getElementById("calcularIMC");
+const btnLimpiar = document.getElementById("limpiarIMC");
+const resultado = document.getElementById("resultadoIMC");
 
-btnIMC.addEventListener("click", () => {
-  const peso = parseFloat(document.getElementById("peso").value)
-  const altura = parseFloat(document.getElementById("altura").value)
-  const edad = parseInt(document.getElementById("edad").value)
-  const genero = document.getElementById("genero").value
+const inputs = document.querySelectorAll(".bmi_inputs input, .bmi_inputs select");
 
-  if(!peso || !altura || !edad || genero === ""){
-    resultado.textContent = "Por favor completa todos los campos"
-    return
+btnCalcular.addEventListener("click", () => {
+  const peso = parseFloat(document.getElementById("peso").value);
+  const alturaCm = parseFloat(document.getElementById("altura").value);
+  const altura = alturaCm / 100;
+
+  if (!peso || !altura) {
+    resultado.textContent = "Por favor completa todos los campos";
+    resultado.classList.add("activo");
+    return;
   }
 
-  const alturaM = altura / 100
-  const imc = (peso / (alturaM ** 2)).toFixed(1)
+  const imc = (peso / (altura * altura)).toFixed(1);
 
-  let estado = ""
-  let mensaje = ""
+  let estado = "";
+  if (imc < 18.5) estado = "Bajo peso";
+  else if (imc < 25) estado = "Peso normal";
+  else if (imc < 30) estado = "Sobrepeso";
+  else estado = "Obesidad";
 
-  if(imc < 18.5){
-    estado = "Bajo peso"
-    mensaje = "Estás por debajo del peso recomendado"
-  }else if(imc < 25){
-    estado = "Peso normal"
-    mensaje = "Tu peso es saludable"
-  }else if(imc < 30){
-    estado = "Sobrepeso"
-    mensaje = "Estás por encima del peso recomendado"
-  }else{
-    estado = "Obesidad"
-    mensaje = "Se recomienda reducir grasa corporal"
-  }
+  // 🔥 RANGO DE PESO SALUDABLE
+  const pesoMin = (18.5 * altura * altura).toFixed(1);
+  const pesoMax = (24.9 * altura * altura).toFixed(1);
 
-  const pesoMin = (18.5 * (alturaM ** 2)).toFixed(1)
-  const pesoMax = (24.9 * (alturaM ** 2)).toFixed(1)
+  // 🔥 PESO IDEAL PROMEDIO
+  const pesoIdeal = ((Number(pesoMin) + Number(pesoMax)) / 2).toFixed(1);
 
   resultado.innerHTML = `
-    <strong>IMC:</strong> ${imc}<br>
-    <strong>Estado:</strong> ${estado}<br>
-    <strong>Peso actual:</strong> ${peso} kg<br>
-    <strong>Peso ideal:</strong> ${pesoMin} kg - ${pesoMax} kg<br>
-    <span>${mensaje}</span>
-  `
-})
+    Tu peso actual es <strong>${peso} kg</strong><br>
+    Tu IMC es <strong>${imc}</strong><br>
+    Estado: <strong>${estado}</strong><br><br>
+    Peso recomendado: <strong>${pesoMin} kg – ${pesoMax} kg</strong><br>
+    Peso ideal aproximado: <strong>${pesoIdeal} kg</strong>
+  `;
+
+  resultado.classList.add("activo");
+});
 
 btnLimpiar.addEventListener("click", () => {
-  resultado.textContent = ""
-})
+  resultado.classList.remove("activo");
+
+  setTimeout(() => {
+    resultado.innerHTML = "";
+
+    inputs.forEach(input => {
+      if (input.tagName === "SELECT") {
+        input.selectedIndex = 0;
+      } else {
+        input.value = "";
+      }
+    });
+  }, 400);
+});
