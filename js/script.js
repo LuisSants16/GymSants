@@ -106,3 +106,4 @@ btnLimpiar.addEventListener("click", () => {
     });
   }, 400);
 });
+
