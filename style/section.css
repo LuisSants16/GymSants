@@ -309,6 +309,9 @@
 
 /* ---------- BMI SECTION ---------- */
 .bmi_section {
+  min-height: 100vh; /* 🔥 ocupa toda la pantalla */
+  display: flex;
+  align-items: center; /* centra vertical */
   padding: 120px 20px;
   background:
     linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.85)),
@@ -592,6 +595,11 @@
   .service_icon {
     top: 10px;
     left: 10px;
+  }
+
+  .bmi_section {
+    min-height: auto;
+    padding: 80px 20px;
   }
 
   .bmi_container {

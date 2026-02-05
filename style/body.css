@@ -38,6 +38,10 @@ body{
   color: var(--dark-font);
 }
 
+section{
+  scroll-margin-top: 50px;
+}
+
 /* Clases de color reutilizables */
 .primaryFont{
   color: var(--primary-font);
