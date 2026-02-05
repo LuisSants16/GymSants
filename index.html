@@ -133,6 +133,131 @@
       </div>
     </section>
 
+    <section class="services_section">
+      <!-- TITLE -->
+      <div class="section_title">
+        <span class="section_label">Nuestros Servicios</span>
+
+        <h2 class="section_heading">
+          Beneficios de entrenar en
+          <span>SantsGyms</span>
+        </h2>
+
+        <div class="section_line"></div>
+      </div>
+
+      <!-- SERVICES GRID -->
+      <div class="services_container">
+        <!-- Servicio 1 -->
+        <article class="service_box">
+          <div class="service_img">
+            <img src="./img/service1.jpg" alt="" />
+            <div class="service_icon">
+              <i class="fa-solid fa-dumbbell"></i>
+            </div>
+          </div>
+
+          <div class="service_info">
+            <h3>Entrenamiento Personalizado</h3>
+            <p>
+              Rutinas diseñadas por entrenadores profesionales adaptadas a tu
+              nivel y objetivos físicos
+            </p>
+          </div>
+        </article>
+
+        <!-- Servicio 2 -->
+        <article class="service_box">
+          <div class="service_img">
+            <img src="./img/service2.jpg" alt="" />
+            <div class="service_icon">
+              <i class="fa-solid fa-calendar-check"></i>
+            </div>
+          </div>
+
+          <div class="service_info">
+            <h3>Planificación de Rutinas</h3>
+            <p>
+              Organización semanal de entrenamientos para maximizar resultados y
+              evitar lesiones
+            </p>
+          </div>
+        </article>
+
+        <!-- Servicio 3 -->
+        <article class="service_box">
+          <div class="service_img">
+            <img src="./img/service3.jpg" alt="" />
+            <div class="service_icon">
+              <i class="fa-solid fa-apple-whole"></i>
+            </div>
+          </div>
+
+          <div class="service_info">
+            <h3>Asesoría Nutricional</h3>
+            <p>
+              Planes alimenticios personalizados para mejorar tu rendimiento
+              físico
+            </p>
+          </div>
+        </article>
+
+        <!-- Servicio 4 -->
+        <article class="service_box">
+          <div class="service_img">
+            <img src="./img/service4.jpg" alt="" />
+            <div class="service_icon">
+              <i class="fa-solid fa-users"></i>
+            </div>
+          </div>
+
+          <div class="service_info">
+            <h3>Clases Grupales</h3>
+            <p>Entrena en comunidad con clases dirigidas de alta intensidad</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="bmi_section">
+      <div class="bmi_container">
+        <!-- INFORMACIÓN -->
+        <div class="bmi_info">
+          <span class="bmi_tag">Índice de Masa Corporal</span>
+          <h2>¿Qué es el IMC?</h2>
+          <p>
+            El Índice de Masa Corporal permite conocer si tu peso actual es
+            saludable según tu estatura, edad y género
+          </p>
+          <a href="plan.html" class="btn_plan">
+            Obtener un plan personalizado
+          </a>
+        </div>
+
+        <!-- CALCULADORA -->
+        <div class="bmi_box">
+          <h3>Calcula tu IMC</h3>
+
+          <div class="bmi_inputs">
+            <input type="number" id="peso" placeholder="Peso (kg)" />
+            <input type="number" id="altura" placeholder="Altura (cm)" />
+            <input type="number" id="edad" placeholder="Edad" />
+
+            <select id="genero">
+              <option value="">Género</option>
+              <option value="hombre">Hombre</option>
+              <option value="mujer">Mujer</option>
+            </select>
+          </div>
+
+          <button id="calcularIMC" class="btn-imc">Calcular</button>
+          <button id="limpiarIMC" class="btn_clear">Limpiar resultado</button>
+
+          <p class="bmi_resultado" id="resultadoIMC"></p>
+        </div>
+      </div>
+    </section>
+
     <script src="./js/script.js"></script>
   </body>
 </html>
