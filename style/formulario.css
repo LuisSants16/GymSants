@@ -238,7 +238,7 @@
 @media (max-width: 768px){
 
   .contact_section{
-    padding: 100px 20px;
+    padding: 50px 20px;
   }
 
   .contact_container{
@@ -274,10 +274,6 @@
 }
 
 @media (max-width: 480px){
-
-  .contact_section{
-    padding: 80px 15px;
-  }
 
   /* TITULO */
   .contact_info h2{

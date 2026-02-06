@@ -980,7 +980,7 @@
   }
 
   .trainers_section {
-    padding: 90px 20px;
+    padding: 60px 20px;
   }
 
   .trainers_container {
@@ -1129,10 +1129,6 @@
   /* RESULTADO */
   .bmi_resultado {
     font-size: 0.9rem;
-  }
-
-  .trainers_section {
-    padding: 70px 15px;
   }
 
   .trainers_titles span {
