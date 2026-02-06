@@ -179,3 +179,38 @@ document.addEventListener("DOMContentLoaded", () => {
   iniciarSlider();
 
 });
+
+/* ============================= */
+/* SCROLL SUAVE SIN # EN URL */
+/* ============================= */
+
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+
+  link.addEventListener("click", function(e){
+
+    e.preventDefault(); // 👈 evita que salga el #
+
+    const id = this.getAttribute("href");
+    const section = document.querySelector(id);
+
+    if(section){
+
+      section.scrollIntoView({
+        behavior: "smooth"
+      });
+
+      // 👇 Borra el # de la URL
+      history.replaceState(null, null, " ");
+    }
+
+  });
+
+});
+
+const yOffset = -80; // alto del header
+const y = section.getBoundingClientRect().top + window.pageYOffset + yOffset;
+
+window.scrollTo({
+  top: y,
+  behavior: "smooth"
+});
