@@ -111,67 +111,71 @@ btnLimpiar.addEventListener("click", () => {
 /* ===== SLIDER TESTIMONIOS ==== */
 /* ============================= */
 
-const testimonios = document.querySelectorAll(".testimonio_item");
-const dots = document.querySelectorAll(".dot");
+document.addEventListener("DOMContentLoaded", () => {
 
-let index = 0;
-let intervalo;
+  const testimonios = document.querySelectorAll(".testimonio_item");
+  const dots = document.querySelectorAll(".dot");
 
-/* LIMPIAR TODO AL INICIAR */
-testimonios.forEach(t => t.classList.remove("active"));
-dots.forEach(d => d.classList.remove("active"));
+  let index = 0;
+  let intervalo;
 
-/* MOSTRAR */
-function mostrarTestimonio(i){
-
+  /* LIMPIAR TODO */
   testimonios.forEach(t => t.classList.remove("active"));
   dots.forEach(d => d.classList.remove("active"));
 
-  testimonios[i].classList.add("active");
-  dots[i].classList.add("active");
+  /* MOSTRAR */
+  function mostrarTestimonio(i){
 
-  index = i;
-}
+    testimonios.forEach(t => t.classList.remove("active"));
+    dots.forEach(d => d.classList.remove("active"));
 
-/* AUTO */
-function iniciarSlider(){
+    testimonios[i].classList.add("active");
+    dots[i].classList.add("active");
 
-  intervalo = setInterval(() => {
+    index = i;
+  }
 
-    index++;
+  /* AUTO */
+  function iniciarSlider(){
 
-    if(index >= testimonios.length){
-      index = 0;
-    }
+    intervalo = setInterval(() => {
 
-    mostrarTestimonio(index);
+      index++;
 
-  }, 4000);
+      if(index >= testimonios.length){
+        index = 0;
+      }
 
-}
+      mostrarTestimonio(index);
 
-/* CLICK DOTS */
-dots.forEach((dot, i) => {
+    }, 4000);
 
-  dot.addEventListener("click", () => {
-    mostrarTestimonio(i);
+  }
+
+  /* CLICK DOTS */
+  dots.forEach((dot, i) => {
+
+    dot.addEventListener("click", () => {
+      mostrarTestimonio(i);
+      clearInterval(intervalo);
+      iniciarSlider();
+    });
+
+  });
+
+  /* HOVER PAUSE */
+  const slider = document.querySelector(".testimonios_slider");
+
+  slider.addEventListener("mouseenter", () => {
     clearInterval(intervalo);
+  });
+
+  slider.addEventListener("mouseleave", () => {
     iniciarSlider();
   });
 
-});
-
-/* HOVER PAUSE */
-const slider = document.querySelector(".testimonios_slider");
-
-slider.addEventListener("mouseenter", () => {
-  clearInterval(intervalo);
-});
-
-slider.addEventListener("mouseleave", () => {
+  /* START */
+  mostrarTestimonio(0);
   iniciarSlider();
-});
 
-/* INICIAR */
-mostrarTestimonio(0);
-iniciarSlider();
+});
